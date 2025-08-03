@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Promo - alfaRow SMM</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    @media (max-width: 800px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr) !important;
+        padding: 0 2vw 3rem 2vw;
+      }
+    }
+    .hamburger {
+      display: none;
+      width: 34px;
+      height: 34px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 110;
+      margin-left: 1rem;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3.2px;
+      background: #222;
+      border-radius: 3px;
+      margin: 4px 0;
+      transition: all 0.3s;
+    }
+    @media (max-width: 800px) {
+      .hamburger { display: flex; }
+      #main-nav {
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        width: 68vw;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--glass, rgba(255,255,255,0.95));
+        border-left: 2px solid var(--glass-border, #d4e0fa);
+        box-shadow: -4px 0 20px rgba(30,60,130,.10);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 3.7rem 2.2rem 2rem 2.2rem;
+        gap: 1.7rem;
+        z-index: 100;
+        transition: right 0.24s cubic-bezier(.9,.05,.22,1.1);
+      }
+      #main-nav.show {
+        right: 0;
+      }
+      #main-nav a, #main-nav .btn-glass, #main-nav .user-greet {
+        margin: 0 !important;
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1.09rem;
+        border-bottom: 1px solid #ececec6b;
+        color: #2a2a2a;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .user-greet { margin-left: 0 !important; margin-top: .3rem; }
+    }
+  </style>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <header class="header">
+    <div class="logo">alfaRow SMM<span>.</span></div>
+    <div class="hamburger" id="hamburger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#produk">Produk</a>
+      <a href="promo.html" style="color:var(--primary);font-weight:700;">Promo</a>
+      <a href="checkout.html" class="cart-link">
+        <span class="cart-icon">🛒</span>
+        <span id="cart-count">0</span>
+      </a>
+      <a href="login.html" class="btn-glass" id="login-link">Login</a>
+    </nav>
+  </header>
+  <section class="hero">
+    <div>
+      <h1>Promo Spesial<br><span class="gradient-text">Diskon & Penawaran Terbaik!</span></h1>
+      <p>Jangan lewatkan promo menarik hanya untuk kamu. Hemat lebih banyak belanja di Tokonline!</p>
+      <a href="#daftar-promo" class="btn-primary">Lihat Promo</a>
+    </div>
+    <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?auto=format&fit=crop&w=400&q=80" class="hero-img" alt="Promo">
+  </section>
+  <main>
+    <h2 class="section-title" id="daftar-promo">Promo Pilihan</h2>
+    <div class="products">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=500&q=80" alt="Promo 1" />
+        <h3>Diskon 50% Headphone Wireless</h3>
+        <div class="price"><del>Rp 299.000</del> <b>Rp 149.500</b></div>
+        <button class="btn-glass">Dapatkan Promo</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1506224774705-2caa4a8b17de?auto=format&fit=crop&w=500&q=80" alt="Promo 2" />
+        <h3>Beli 1 Gratis 1 Smart Watch</h3>
+        <div class="price">Rp 599.000</div>
+        <button class="btn-glass">Dapatkan Promo</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=500&q=80" alt="Promo 3" />
+        <h3>Flash Sale Lampu LED</h3>
+        <div class="price"><del>Rp 50.000</del> <b>Rp 25.000</b></div>
+        <button class="btn-glass">Dapatkan Promo</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3fdc?auto=format&fit=crop&w=500&q=80" alt="Promo 4" />
+        <h3>Backpack Trendy Cashback 25%</h3>
+        <div class="price">Rp 220.000 <span style="color:#14ad34; font-size:.99em;">+ Cashback</span></div>
+        <button class="btn-glass">Dapatkan Promo</button>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>© 2025 <strong>alfaRow SMM</strong>. All rights reserved.</p>
+
+  </footer>
+  <script>
+    // Hamburger menu & greet user
+    document.addEventListener("DOMContentLoaded", function(){
+      const hamburger = document.getElementById("hamburger-menu");
+      const nav = document.getElementById("main-nav");
+
+      hamburger.addEventListener("click", function(){
+        nav.classList.toggle("show");
+      });
+
+      document.addEventListener("click", function(e){
+        if(window.innerWidth <= 800 && !nav.contains(e.target) && !hamburger.contains(e.target)){
+          nav.classList.remove("show");
+        }
+      });
+
+      document.querySelectorAll("#main-nav a").forEach(link => {
+        link.addEventListener("click", () => {
+          if(window.innerWidth <= 800){
+            nav.classList.remove("show");
+          }
+        });
+      });
+
+      // Login/logout greet
+      const isLogin = localStorage.getItem("isLogin") === "true";
+      const username = localStorage.getItem("username") || "";
+      const loginLink = document.getElementById("login-link");
+
+      if (isLogin && username) {
+        if (loginLink) loginLink.remove();
+
+        const userSpan = document.createElement("span");
+        userSpan.className = "user-greet";
+        userSpan.style.marginLeft = "1.5rem";
+        userSpan.style.fontWeight = "600";
+        userSpan.textContent = `Hi, ${username}`;
+
+        const logoutBtn = document.createElement("a");
+        logoutBtn.href = "#";
+        logoutBtn.className = "btn-glass";
+        logoutBtn.style.marginLeft = "1rem";
+        logoutBtn.textContent = "Logout";
+        logoutBtn.onclick = function() {
+          localStorage.removeItem("isLogin");
+          localStorage.removeItem("username");
+          window.location.reload();
+          return false;
+        };
+
+        nav.appendChild(userSpan);
+        nav.appendChild(logoutBtn);
+      }
+    });
+  </script>
+</body>
+</html>

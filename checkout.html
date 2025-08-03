@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - alfaRow SMM</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+  <script>
+    if (localStorage.getItem("isLogin") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+  <style>
+    /* ... (CSS Anda yang sudah ada, tidak perlu diubah) ... */
+    :root {
+      --glass: rgba(255,255,255,0.45);
+      --glass-border: #d4e0fa;
+      --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    }
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+    .logo, .header-right a, h2, .btn-primary, .form-group label {
+        font-family: 'Montserrat', sans-serif;
+    }
+    @media (max-width: 800px) {
+      .header {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .header-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .user-greet {
+        font-size: 1rem;
+        font-weight: 600;
+        background: var(--glass, rgba(255,255,255,0.45));
+        padding: 6px 13px;
+        border-radius: 20px;
+        margin-left: .8rem !important;
+      }
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .user-greet {
+      margin-left: 1.5rem;
+      font-weight: 600;
+      color: #222;
+      background: var(--glass, rgba(255,255,255,0.45));
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 1.08rem;
+    }
+    .hamburger {
+      display: none;
+      width: 34px;
+      height: 34px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 110;
+      margin-left: 1rem;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3.2px;
+      background: #222;
+      border-radius: 3px;
+      margin: 4px 0;
+      transition: all 0.3s;
+    }
+    @media (max-width: 800px) {
+      .hamburger { display: flex; }
+      nav#main-nav {
+        position: fixed;
+        top: 0;
+        right: -100vw;
+        width: 68vw;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--glass, rgba(255,255,255,0.95));
+        border-left: 2px solid var(--glass-border, #d4e0fa);
+        box-shadow: -4px 0 20px rgba(30,60,130,.10);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 3.7rem 2.2rem 2rem 2.2rem;
+        gap: 1.7rem;
+        z-index: 100;
+        transition: right 0.24s cubic-bezier(.9,.05,.22,1.1);
+      }
+      nav#main-nav.show { right: 0; }
+      nav#main-nav a, nav#main-nav .btn-glass, nav#main-nav .logout-btn {
+        margin: 0 !important;
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1.09rem;
+        border-bottom: 1px solid #ececec6b;
+        color: #2a2a2a;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        text-align: left;
+      }
+    }
+    .checkout-container {
+      max-width: 440px;
+      margin: 2.2rem auto 0 auto;
+      background: var(--glass, rgba(255,255,255,0.7));
+      border: 1.5px solid var(--glass-border, #d4e0fa);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: var(--shadow, 0 8px 32px 0 rgba(31, 38, 135, 0.15));
+      backdrop-filter: blur(8px);
+    }
+    #checkout-success {
+      display: none;
+      text-align: center;
+      color: #14ad34;
+      font-weight: 700;
+      margin: 1.7rem 0 0.5rem 0;
+      font-size: 1.13rem;
+      letter-spacing: .02em;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      box-sizing: border-box; /* Tambahan untuk konsistensi */
+    }
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .form-group .required {
+      color: #ff4444;
+    }
+    .form-note {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 0.3rem;
+    }
+    .error-message {
+      color: #ff4444;
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+    #data-diri-form {
+      margin-top: 1.5rem;
+      display: none;
+    }
+    #show-form-btn {
+      width: 100%;
+      margin-top: 1.1rem;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+      padding: 12px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 12px;
+      position: relative;
+    }
+    .cart-item img {
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+    .cart-info {
+      flex: 1;
+    }
+    .cart-item-price {
+      color: #0077ff;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
+    .qty-btn:hover {
+      background: #e0e0e0;
+    }
+    .qty-value {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ff4444;
+      font-size: 18px;
+    }
+    .empty-cart {
+      color: #999;
+      margin: 1rem 0 2rem 0;
+      text-align: center;
+    }
+    /* Style untuk button disabled */
+    .btn-primary:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+  </head>
+<body>
+  <div class="bg-gradient"></div>
+  <header class="header">
+    <div class="header-content">
+      <div style="display:flex; align-items:center;">
+        <div class="logo">alfaRow SMM<span>.</span></div>
+        <div class="hamburger" id="hamburger-menu" tabindex="0">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="header-right" id="header-right">
+        <a href="checkout.html" class="cart-link" style="margin-left:0;">
+          <span class="cart-icon">🛒</span>
+          <span id="cart-count">0</span>
+        </a>
+        </div>
+    </div>
+    <nav id="main-nav">
+      </nav>
+  </header>
+  
+  <main>
+    <div class="checkout-container">
+      <h2 style="text-align:center; font-weight:700; font-size:1.45rem;">Checkout</h2>
+      
+      <div id="cart-items"></div>
+      <div class="cart-total">Total: <span id="cart-total">Rp 0</span></div>
+      
+      <button class="btn-primary" id="show-form-btn" style="width:100%;font-size:1.08rem;">Lanjutkan Checkout</button>
+      
+      <form id="data-diri-form">
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" required>
+          <div class="error-message" id="email-error">Harap masukkan email yang valid</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Nomor HP <span class="required">*</span></label>
+          <input type="tel" id="phone" required>
+          <div class="error-message" id="phone-error">Harap masukkan nomor HP yang valid (10-15 digit)</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Pesan untuk Penjual <span class="required">*</span></label>
+          <textarea id="message" required minlength="15"></textarea>
+          <div class="form-note">Minimal 15 karakter</div>
+          <div class="error-message" id="message-error">Pesan harus minimal 15 karakter</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="promo">Kode Promo (Opsional)</label>
+          <input type="text" id="promo">
+        </div>
+        
+        <button type="submit" class="btn-primary" style="width:100%;font-size:1.08rem;margin-top:0.5rem;">Checkout Sekarang</button>
+      </form>
+      
+      <div id="checkout-success">Checkout berhasil! Terima kasih sudah belanja 🎉</div>
+    </div>
+  </main>
+  
+  <footer>
+    <p>© 2025 <strong>alfaRow SMM</strong>. All rights reserved.</p>
+
+  </footer>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      
+      // ==========================
+      // FUNGSI GLOBAL & UTILITY
+      // ==========================
+      const toRupiah = (angka) => 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      
+      const getCart = () => JSON.parse(localStorage.getItem('cart') || '[]');
+      
+      const saveCart = (cart) => localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // ==========================
+      // INISIALISASI HEADER & NAV
+      // ==========================
+      function initHeaderAndNav() {
+        // Tampilkan sapaan "Hi, user"
+        const headerRight = document.getElementById("header-right");
+        headerRight.querySelectorAll('.user-greet').forEach(el => el.remove());
+        const username = localStorage.getItem("username") || "";
+        if (username) {
+          const userSpan = document.createElement("span");
+          userSpan.className = "user-greet";
+          userSpan.textContent = `Hi, ${username}`;
+          headerRight.appendChild(userSpan);
+        }
+
+        // Render menu navigasi (termasuk hamburger)
+        const hamburger = document.getElementById("hamburger-menu");
+        const nav = document.getElementById("main-nav");
+        nav.innerHTML = "";
+        
+        const navLinks = [
+            { href: "index.html", text: "Home" },
+            { href: "index.html#produk", text: "Produk" },
+            { href: "promo.html", text: "Promo" }
+        ];
+
+        navLinks.forEach(linkInfo => {
+            const link = document.createElement('a');
+            link.href = linkInfo.href;
+            link.textContent = linkInfo.text;
+            nav.appendChild(link);
+        });
+
+        // Tampilkan menu Admin jika user adalah "alfa"
+        if (localStorage.getItem("username") === "alfa") {
+            const adminMenu = document.createElement('a');
+            adminMenu.href = "admin.html";
+            adminMenu.textContent = "Admin";
+            nav.appendChild(adminMenu);
+        }
+
+        // Tombol Logout
+        const logoutBtn = document.createElement("a");
+        logoutBtn.href = "#";
+        logoutBtn.className = "btn-glass logout-btn";
+        logoutBtn.textContent = "Logout";
+        logoutBtn.onclick = (e) => {
+            e.preventDefault();
+            localStorage.removeItem("isLogin");
+            localStorage.removeItem("username");
+            window.location.href = "login.html"; // Redirect ke login setelah logout
+        };
+        nav.appendChild(logoutBtn);
+
+        // Event listener untuk hamburger
+        hamburger.addEventListener("click", (e) => {
+            nav.classList.toggle("show");
+            e.stopPropagation();
+        });
+
+        document.addEventListener("click", (e) => {
+            if(window.innerWidth <= 800 && !nav.contains(e.target) && !hamburger.contains(e.target)){
+                nav.classList.remove("show");
+            }
+        });
+
+        nav.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                if(window.innerWidth <= 800) nav.classList.remove("show");
+            });
+        });
+      }
+
+      // ===================
+      // FUNGSI CHECKOUT
+      // ===================
+      function updateCartCount() {
+        const cart = getCart();
+        const totalItems = cart.reduce((total, item) => total + item.qty, 0);
+        document.getElementById('cart-count').textContent = totalItems;
+      }
+      
+      function renderCart() {
+        const cart = getCart();
+        const cartItemsEl = document.getElementById('cart-items');
+        const cartTotalEl = document.getElementById('cart-total');
+        const showFormBtn = document.getElementById('show-form-btn');
+        
+        cartItemsEl.innerHTML = ""; // Kosongkan dulu
+        
+        if (!cart.length) {
+          cartItemsEl.innerHTML = "<p class='empty-cart'>Keranjang Anda masih kosong.</p>";
+          cartTotalEl.textContent = 'Rp 0';
+          showFormBtn.disabled = true;
+          showFormBtn.style.display = 'block'; // Pastikan tombol muncul lagi
+          document.getElementById('data-diri-form').style.display = 'none'; // Sembunyikan form
+          updateCartCount();
+          return;
+        }
+        
+        let total = 0;
+        cart.forEach((item, index) => {
+          total += item.price * item.qty;
+          const itemHtml = `
+            <div class="cart-item" data-id="${item.id}">
+              <button class="delete-btn" data-index="${index}" title="Hapus item">🗑️</button>
+              <img src="${item.img}" alt="${item.name}">
+              <div class="cart-info">
+                <div>${item.name}</div>
+                <div class="qty-controls">
+                  <button class="qty-btn minus" data-index="${index}">-</button>
+                  <span class="qty-value">${item.qty}</span>
+                  <button class="qty-btn plus" data-index="${index}">+</button>
+                </div>
+                <div class="cart-item-price">${toRupiah(item.price * item.qty)}</div>
+              </div>
+            </div>
+          `;
+          cartItemsEl.innerHTML += itemHtml;
+        });
+        
+        cartTotalEl.textContent = toRupiah(total);
+        showFormBtn.disabled = false;
+        updateCartCount();
+      }
+      
+      function removeFromCart(index) {
+        let cart = getCart();
+        if (index >= 0 && index < cart.length) {
+          cart.splice(index, 1);
+          saveCart(cart);
+          renderCart(); // Render ulang tampilan keranjang
+        }
+      }
+      
+      function updateQuantity(index, change) {
+        let cart = getCart();
+        if (index >= 0 && index < cart.length) {
+          cart[index].qty += change;
+          
+          // Jika kuantitas jadi 0 atau kurang, hapus produk dari keranjang
+          if (cart[index].qty <= 0) {
+            cart.splice(index, 1);
+          }
+          
+          saveCart(cart);
+          renderCart(); // Render ulang tampilan keranjang
+        }
+      }
+
+      // Event delegation untuk tombol di dalam keranjang
+      document.getElementById('cart-items').addEventListener('click', function(e) {
+          const target = e.target;
+          if (target.classList.contains('delete-btn')) {
+              const index = parseInt(target.getAttribute('data-index'));
+              removeFromCart(index);
+          } else if (target.classList.contains('qty-btn')) {
+              const index = parseInt(target.getAttribute('data-index'));
+              const change = target.classList.contains('plus') ? 1 : -1;
+              updateQuantity(index, change);
+          }
+      });
+      
+      // Tampilkan form saat "Lanjutkan Checkout" diklik
+      document.getElementById('show-form-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        this.style.display = 'none';
+        document.getElementById('data-diri-form').style.display = 'block';
+      });
+      
+      // ===================
+      // VALIDASI & SUBMIT FORM
+      // ===================
+      const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      const validatePhone = (phone) => /^[0-9]{10,15}$/.test(phone);
+      const validateMessage = (message) => message.length >= 15;
+      
+      function handleCheckout(e) {
+        e.preventDefault();
+        
+        // Ambil dan validasi semua input
+        const emailEl = document.getElementById('email');
+        const phoneEl = document.getElementById('phone');
+        const messageEl = document.getElementById('message');
+        
+        const isEmailValid = validateEmail(emailEl.value);
+        const isPhoneValid = validatePhone(phoneEl.value);
+        const isMessageValid = validateMessage(messageEl.value);
+        
+        document.getElementById('email-error').style.display = isEmailValid ? 'none' : 'block';
+        document.getElementById('phone-error').style.display = isPhoneValid ? 'none' : 'block';
+        document.getElementById('message-error').style.display = isMessageValid ? 'none' : 'block';
+        
+        if (!isEmailValid || !isPhoneValid || !isMessageValid) return;
+        
+        const cart = getCart();
+        if (!cart.length) {
+          alert("Keranjang masih kosong!");
+          return;
+        }
+        
+        // Buat pesan WhatsApp
+        let whatsappMessage = "*Order Tokonline*\n\n";
+        let total = 0;
+        
+        whatsappMessage += "*Daftar Produk:*\n";
+        cart.forEach((item, idx) => {
+          whatsappMessage += `${idx + 1}. ${item.name} (x${item.qty}) = ${toRupiah(item.price * item.qty)}\n`;
+          total += item.price * item.qty;
+        });
+        
+        whatsappMessage += `\n*Total: ${toRupiah(total)}*\n`;
+        const promo = document.getElementById('promo').value;
+        if (promo) {
+          whatsappMessage += `Kode Promo: ${promo}\n`;
+        }
+        whatsappMessage += `\n*Data Pembeli:*\n`;
+        whatsappMessage += `Nama: ${localStorage.getItem("username") || '-'}\n`;
+        whatsappMessage += `Email: ${emailEl.value}\n`;
+        whatsappMessage += `No. HP: ${phoneEl.value}\n`;
+        whatsappMessage += `Pesan: ${messageEl.value}\n\n`;
+        whatsappMessage += `Terima kasih!`;
+
+        // Ganti dengan nomor WhatsApp Anda
+        const waNo = "6282129825028";
+        const url = `https://wa.me/${waNo}?text=${encodeURIComponent(whatsappMessage)}`;
+        
+        // Kosongkan keranjang di localStorage
+        localStorage.removeItem('cart');
+        
+        // Tampilkan pesan sukses, lalu redirect
+        document.getElementById('checkout-success').style.display = 'block';
+        document.getElementById('data-diri-form').style.display = 'none';
+        
+        setTimeout(() => {
+          window.location.href = url;
+          // Render ulang keranjang setelah redirect agar tampilan kosong
+          renderCart(); 
+        }, 2000);
+      }
+
+      // ===================
+      // INISIALISASI HALAMAN
+      // ===================
+      initHeaderAndNav();
+      renderCart();
+      document.getElementById('data-diri-form').addEventListener('submit', handleCheckout);
+    });
+  </script>
+</body>
+</html>

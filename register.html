@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daftar - alfaRow SMM</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="login-box">
+    <div class="login-logo">alfaRow SMM<span>.</span></div>
+    <h2>Buat Akun Baru</h2>
+    <form id="register-form" autocomplete="off">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="confirm-password" placeholder="Konfirmasi Password" required>
+      <button class="btn-primary" type="submit">Daftar</button>
+      <div id="register-error" style="margin-top: 1rem; color: #d03939; font-weight: 600; display:none;"></div>
+      <p class="login-desc">Sudah punya akun? <a href="login.html">Login</a></p>
+    </form>
+  </div>
+  <script>
+    document.getElementById("register-form").addEventListener("submit", function(e){
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword = document.getElementById("confirm-password").value.trim();
+      const errorBox = document.getElementById("register-error");
+
+      // Validasi simple
+      if(!email || !username || !password || !confirmPassword) {
+        errorBox.style.display = "block";
+        errorBox.textContent = "Semua kolom wajib diisi!";
+        return;
+      }
+      if(password !== confirmPassword) {
+        errorBox.style.display = "block";
+        errorBox.textContent = "Konfirmasi password tidak sama!";
+        return;
+      }
+
+      // Kirim ke WhatsApp (GANTI nomor berikut dengan WA kamu)
+      const waNo = "6282129825028"; // <-- Ganti dengan nomor WA kamu (tanpa +)
+      let msg = "*Pendaftaran Akun alfaRow SMM*\n\n";
+      msg += `Email: ${email}\nUsername: ${username}\nPassword: ${password}\n`;
+      msg += "User baru meminta pendaftaran di alfaRow SMM.  ";
+      msg += "*Tunggu aja sampai admin membuatkan akun nya sekitar 5 menit*";
+
+      // WhatsApp redirect
+      const url = `https://wa.me/${waNo}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+      alert("Pendaftaran berhasil! Data kamu telah dikirim ke admin via WhatsApp. Silakan tunggu konfirmasi atau langsung login jika sudah diaktifkan.");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
