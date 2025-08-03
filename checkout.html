@@ -555,14 +555,18 @@
         
         whatsappMessage += `\n*Total: ${toRupiah(total)}*\n`;
         const promo = document.getElementById('promo').value;
+                  whatsappMessage += `alfarow.biz.id/Qris`;
         if (promo) {
           whatsappMessage += `Kode Promo: ${promo}\n`;
         }
+
         whatsappMessage += `\n*Data Pembeli:*\n`;
         whatsappMessage += `Nama: ${localStorage.getItem("username") || '-'}\n`;
         whatsappMessage += `Email: ${emailEl.value}\n`;
         whatsappMessage += `No. HP: ${phoneEl.value}\n`;
         whatsappMessage += `Pesan: ${messageEl.value}\n\n`;
+        whatsappMessage += `lakukan pembayaran sesuai nominal biar pesanan kamu di proses otomatis`;
+
         whatsappMessage += `Terima kasih!`;
 
         // Ganti dengan nomor WhatsApp Anda
