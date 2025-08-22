@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>alfaRow SMM</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
-  <!-- Proteksi: redirect ke login jika belum login -->
-
-  <script>
-    if (localStorage.getItem("isLogin") !== "true") {
-      window.location.href = "login.html";
-  </script>
-  <style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>alfaRow SMM</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto&display=swap" rel="stylesheet">
+        
+      <style>
     /* ... (CSS kamu seperti sebelumnya, biarkan saja) ... */
     @media (max-width: 800px) {
       .products {
@@ -161,447 +156,759 @@
         font-size: 0.85rem;
       }
     }
+
+    .product-card .product-description {
+    font-size: 12px; /* Ukuran font agar tidak terlalu besar */
+    color: #555; /* Warna teks abu-abu agar mudah dibaca */
+    margin-top: 10px; /* Jarak dari harga */
+    margin-bottom: 15px; /* Jarak ke tombol beli */
+    padding: 0 10px; /* Sedikit spasi di kiri dan kanan */
+}
   </style>
   <script defer src="script.js"></script>
 </head>
 <body>
-  <div class="bg-gradient"></div>
-  <header class="header">
-    <div class="header-content">
-      <div style="display:flex; align-items:center;">
-        <div class="logo">alfaRow SMM<span>.</span></div>
-        <div class="hamburger" id="hamburger-menu" tabindex="0">
-          <span></span>
-          <span></span>
-          <span></span>
+    <div class="bg-gradient"></div>
+    <header class="header">
+        <div class="header-content">
+            <div style="display:flex; align-items:center;">
+                <div class="logo">alfaRow SMM<span>.</span></div>
+                <div class="hamburger" id="hamburger-menu" tabindex="0">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="header-right" id="header-right">
+                <p>Memuat...</p>
+            </div>
         </div>
-      </div>
-      <div class="header-right" id="header-right">
-        <a href="checkout.html" class="cart-link" style="margin-left:0;">
-          <span class="cart-icon">🛒</span>
-          <span id="cart-count">0</span>
-        </a>
-        <!-- Hi, daffa tampil di sini oleh JS -->
-      </div>
-    </div>
-    <nav id="main-nav">
-      <!-- JS akan mengisi link & logout/login di sini -->
-    </nav>
-  </header>
-  <section class="hero">
-    <div>
-      <h1>Belanja Kebutuhanmu<br><span class="gradient-text">Super Cepat & Mudah</span></h1>
-      <p>Diskon spesial hari ini! Cek produk terbaru dan terbaik hanya di Tokonline.</p>
-      <a href="#produk" class="btn-primary">Lihat Produk</a>
-    </div>
-    <img src="https://files.catbox.moe/xmn70r.jpg" class="hero-img" alt="Hero">
-  </section>
-  <main>
-    <h2 class="section-title" id="produk">Produk Pilihan</h2>
+        <nav id="main-nav"></nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>Belanja Kebutuhanmu<br><span class="gradient-text">Super Cepat & Mudah</span></h1>
+            <p>Diskon spesial hari ini! Cek produk terbaru dan terbaik hanya di Tokonline.</p>
+            <a href="#produk" class="btn-primary">Lihat Produk</a>
+        </div>
+        <img src="https://files.catbox.moe/xmn70r.jpg" class="hero-img" alt="Hero">
+    </section>
     
-    <!-- Category Filter -->
-    <div class="category-filter">
-      <button class="category-btn active" data-category="all">Semua</button>
-      <button class="category-btn" data-category="YouTube">YouTube</button>
-      <button class="category-btn" data-category="Tiktok">Tiktok</button>
-      <button class="category-btn" data-category="Instagram">Instagram</button>
-      <button class="category-btn" data-category="WhatsApp">WhatsApp</button>
-      <button class="category-btn" data-category="Twitter">Twitter</button>
-      <button class="category-btn" data-category="Shopee">Shopee</button>
-      <button class="category-btn" data-category="Facebook">Facebook</button>
-      <button class="category-btn" data-category="Apk premium">Apk premium</button>
-      <button class="category-btn" data-category="Panel bot Wa atau Tele">Panel bot Wa atau Tele</button>
-      <button class="category-btn" data-category="Nokos">Nokos</button>
-      <button class="category-btn" data-category="Hosting">Hosting</button>
-      <button class="category-btn" data-category="Free Fire">Free Fire</button>
-       <button class="category-btn" data-category="Mobile Legends">Mobile Legends</button>
-       <button class="category-btn" data-category="Genshin Impact">Genshin Impact</button>
-       <button class="category-btn" data-category="MLBB Global">MLBB Global</button>
-    </div>
-    
-    <div class="products">
-      <div class="product-card" data-id="1" data-name="YouTube Premium 1 Bulan Full" data-price="120000" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="Apk premium">
-        <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 5" />
-        <span class="category">Apk premium</span>
-        <h3>YouTube Premium 1 Bulan Full</h3>
-        <div class="price">Rp 3.500</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="2" data-name="YouTube Premium keluarga 1 Bulan Full bisa 5 orang" data-price="120000" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="Apk premium">
-        <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 5" />
-        <span class="category">Apk premium</span>
-        <h3>YouTube Premium keluarga 1 Bulan Full bisa 5 orang</h3>
-        <div class="price">Rp 5.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="3" data-name="Canva premium 1 bulan" data-price="120000" data-img="https://files.catbox.moe/o6h26m.png" data-category="Apk premium">
-        <img src="https://files.catbox.moe/o6h26m.png" alt="Produk 5" />
-        <span class="category">Apk premium</span>
-        <h3>Canva premium 1 bulan</h3>
-        <div class="price">Rp 1.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="4" data-name="YouTube Community Like / 50" data-price="1100" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
-        <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 1" />
-        <span class="category">Youtube</span>
-        <h3>Youtube Community Like / 50</h3>
-        <div class="price">Rp 1.100</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-       <div class="product-card" data-id="5" data-name="YouTube Likes [Garansi] / 100" data-price="1700" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
-        <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 4" />
-        <span class="category">YouTube</span>
-        <h3>YouTube Likes [Garansi] / 100</h3>
-        <div class="price">Rp 1.700</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="6" data-name="YouTube Subscribers / 100" data-price="3539" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
-        <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 4" />
-        <span class="category">YouTube</span>
-        <h3>YouTube Subscribers / 100</h3>
-        <div class="price">Rp 3.539</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="7" data-name="YouTube Views / 100" data-price="3215" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
-        <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 4" />
-        <span class="category">YouTube</span>
-        <h3>YouTube Views / 100</h3>
-        <div class="price">Rp 3.215</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="8" data-name="Youtube Watch Time / 1.000" data-price="61581" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
-        <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 4" />
-        <span class="category">YouTube</span>
-        <h3>Youtube Watch Time / 1.000</h3>
-        <div class="price">Rp 61.581</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="9" data-name="TikTok Likes / 1.000" data-price="61581" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
-        <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
-        <span class="category">Tiktok</span>
-        <h3>TikTok Likes / 1.000</h3>
-        <div class="price">Rp 2.436</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="10" data-name="TikTok Likes Indonesia 100% / 50" data-price="61581" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
-        <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
-        <span class="category">Tiktok</span>
-        <h3>TikTok Likes Indonesia 100% / 50</h3>
-        <div class="price">Rp 1.753</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="11" data-name="TikTok Followers / 100" data-price="61581" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
-        <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
-        <span class="category">Tiktok</span>
-        <h3>TikTok Followers / 100</h3>
-        <div class="price">Rp 2.786</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="12" data-name="Tiktok Followers Indonesia / 10" data-price="61581" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
-        <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
-        <span class="category">Tiktok</span>
-        <h3>Tiktok Followers Indonesia / 10</h3>
-        <div class="price">Rp 1.096</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="13" data-name="TikTok Save / 1.000" data-price="61581" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
-        <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
-        <span class="category">Tiktok</span>
-        <h3>TikTok Save / 1.000</h3>
-        <div class="price">Rp 1.365</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="14" data-name="TikTok Video Views / 10.000" data-price="61581" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
-        <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
-        <span class="category">Tiktok</span>
-        <h3>TikTok Video Views / 10.000</h3>
-        <div class="price">Rp 1.496</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="15" data-name="Instagram Followers Indonesia / 100" data-price="50000" data-img="https://files.catbox.moe/ghdg3f.jpg" data-category="Instagram">
-        <img src="https://files.catbox.moe/ghdg3f.jpg" alt="Produk 3" />
-        <span class="category">Instagram</span>
-        <h3>Instagram Followers Indonesia / 100</h3>
-        <div class="price">Rp 3.096</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="16" data-name="Instagram Likes Indonesia / 100" data-price="50000" data-img="https://files.catbox.moe/ghdg3f.jpg" data-category="Instagram">
-        <img src="https://files.catbox.moe/ghdg3f.jpg" alt="Produk 3" />
-        <span class="category">Instagram</span>
-        <h3>Instagram Likes Indonesia / 100</h3>
-        <div class="price">Rp 896</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="17" data-name="Instagram Reels Real Likes / 1.000" data-price="50000" data-img="https://files.catbox.moe/ghdg3f.jpg" data-category="Instagram">
-        <img src="https://files.catbox.moe/ghdg3f.jpg" alt="Produk 3" />
-        <span class="category">Instagram</span>
-        <h3>Instagram Reels Real Likes / 1.000</h3>
-        <div class="price">Rp 742</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="18" data-name="Whatsapp Channel Post Reaction Random Mix [👍❤️😂😲😥🙏] / 100" data-price="220000" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
-        <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
-        <span class="category">WhatsApp</span>
-        <h3>Whatsapp Channel Post Reaction Random Mix [👍❤️😂😲😥🙏] / 100</h3>
-        <div class="price">Rp 1.600</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="19" data-name="Whatsapp Channel Member [No garansi] / 50" data-price="220000" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
-        <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
-        <span class="category">WhatsApp</span>
-        <h3>Whatsapp Channel Member [No garansi] / 50</h3>
-        <div class="price">Rp 1.500</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="20" data-name="Whatsapp Channel Member [Garansi] / 10" data-price="220000" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
-        <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
-        <span class="category">WhatsApp</span>
-        <h3>Whatsapp Channel Member [Garansi] / 10</h3>
-        <div class="price">Rp 400</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="21" data-name="Twitter Video Views / 1.000" data-price="120000" data-img="https://files.catbox.moe/numxut.jpg" data-category="Twitter">
-        <img src="https://files.catbox.moe/numxut.jpg" alt="Produk 5" />
-        <span class="category">Twitter</span>
-        <h3>Twitter Video Views / 1.000</h3>
-        <div class="price">Rp 453</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="22" data-name="Twitter Likes / 100" data-price="120000" data-img="https://files.catbox.moe/numxut.jpg" data-category="Twitter">
-        <img src="https://files.catbox.moe/numxut.jpg" alt="Produk 5" />
-        <span class="category">Twitter</span>
-        <h3>Twitter Likes / 100</h3>
-        <div class="price">Rp 2.932</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="23" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/numxut.jpg" data-category="Twitter">
-        <img src="https://files.catbox.moe/numxut.jpg" alt="Produk 5" />
-        <span class="category">Twitter</span>
-        <h3>Twitter Followers / 100</h3>
-        <div class="price">Rp 2.932</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="24" data-name="Shopee Followers Indonesia / 1.000" data-price="350000" data-img="https://files.catbox.moe/luvqah.jpg" data-category="Shopee">
-        <img src="https://files.catbox.moe/luvqah.jpg" alt="Produk 6" />
-        <span class="category">Shopee</span>
-        <h3>Shopee Followers Indonesia / 1.000</h3>
-        <div class="price">Rp 3.586</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="25" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 1Gb</h3>
-        <div class="price">Rp 1.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="26" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 2Gb</h3>
-        <div class="price">Rp 2.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="27" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 3Gb</h3>
-        <div class="price">Rp 3.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="28" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 4Gb</h3>
-        <div class="price">Rp 4.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="29" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 5Gb</h3>
-        <div class="price">Rp 5.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="30" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 6Gb</h3>
-        <div class="price">Rp 6.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="31" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 7Gb</h3>
-        <div class="price">Rp 7.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="32" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 8Gb</h3>
-        <div class="price">Rp 8.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="33" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 9Gb</h3>
-        <div class="price">Rp 9.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="34" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot 10Gb</h3>
-        <div class="price">Rp 10.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="35" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot unlimited</h3>
-        <div class="price">Rp 11.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="36" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot Resseler 1Gb-unli</h3>
-        <div class="price">Rp 12.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      <div class="product-card" data-id="37" data-name="Twitter Followers / 100" data-price="120000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
-        <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
-        <span class="category">Panel bot Wa atau Tele</span>
-        <h3>Panel Bot ADP [admin panel]</h3>
-        <div class="price">Rp 15.000</div>
-        <button class="btn-glass add-cart-btn">Beli</button>
-      </div>
-      
-   </div>
-  </main>
-  <footer>
-      <p>© 2025 <strong>alfaRow SMM</strong>. All rights reserved.</p>
-
-  </footer>
-
-  <script src="//code.tidio.co/hngwbwfu8glbxcemqnez4ksog493gxw3.js" async></script>
-  
-  <script>
-    // Responsive hamburger menu & nav link
-    document.addEventListener("DOMContentLoaded", function(){
-      const hamburger = document.getElementById("hamburger-menu");
-      const nav = document.getElementById("main-nav");
-      const headerRight = document.getElementById("header-right");
-
-      // Render greet di header-right
-      function renderHeaderRight() {
-        // Hapus greet dulu biar nggak dobel
-        headerRight.querySelectorAll('.user-greet').forEach(el => el.remove());
-
-        const isLogin = localStorage.getItem("isLogin") === "true";
-        const username = localStorage.getItem("username") || "";
-        if (isLogin && username) {
-          const userSpan = document.createElement("span");
-          userSpan.className = "user-greet";
-          userSpan.textContent = `Hi, ${username}`;
-          headerRight.appendChild(userSpan);
-        }
-      }
-
-      // Render menu nav + logout/login di drawer
-      function renderNav() {
-        nav.innerHTML = "";
-        const home = document.createElement('a');
-        home.href = "index.html";
-        home.textContent = "Home";
-        nav.appendChild(home);
-
-        const produk = document.createElement('a');
-        produk.href = "index.html#produk";
-        produk.textContent = "Produk";
-        nav.appendChild(produk);
-
-        const promo = document.createElement('a');
-        promo.href = "promo.html";
-        promo.textContent = "Promo";
-        nav.appendChild(promo);
-
-        const isLogin = localStorage.getItem("isLogin") === "true";
-        if (isLogin) {
-          const logoutBtn = document.createElement("a");
-          logoutBtn.href = "#";
-          logoutBtn.className = "btn-glass logout-btn";
-          logoutBtn.textContent = "Logout";
-          logoutBtn.onclick = function() {
-            localStorage.removeItem("isLogin");
-            localStorage.removeItem("username");
-            window.location.reload();
-            return false;
-          };
-          nav.appendChild(logoutBtn);
-        } else {
-          const loginBtn = document.createElement("a");
-          loginBtn.href = "login.html";
-          loginBtn.className = "btn-glass";
-          loginBtn.textContent = "Login";
-          nav.appendChild(loginBtn);
-        }
-      }
-
-      // Filter produk berdasarkan kategori
-      function filterProducts() {
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        const productCards = document.querySelectorAll('.product-card');
+    <main>
+        <h2 class="section-title" id="produk">Produk Pilihan</h2>
         
-        categoryBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            // Update active button
-            categoryBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        <div class="category-filter">
+            <button class="category-btn active" data-category="all">Semua</button>
+            <button class="category-btn" data-category="YouTube">YouTube</button>
+            <button class="category-btn" data-category="Tiktok">Tiktok</button>
+            <button class="category-btn" data-category="Instagram">Instagram</button>
+            <button class="category-btn" data-category="WhatsApp">WhatsApp</button>
+            <button class="category-btn" data-category="Twitter">Twitter</button>
+            <button class="category-btn" data-category="Shopee">Shopee</button>
+            <button class="category-btn" data-category="Facebook">Facebook</button>
+            <button class="category-btn" data-category="Apk premium">Apk premium</button>
+            <button class="category-btn" data-category="Panel bot Wa atau Tele">Panel bot Wa atau Tele</button>
+            <button class="category-btn" data-category="Nokos">Nokos</button>
+            <button class="category-btn" data-category="Hosting">Hosting</button>
+            <button class="category-btn" data-category="Free Fire">Free Fire</button>
+            <button class="category-btn" data-category="Mobile Legends">Mobile Legends</button>
+            <button class="category-btn" data-category="Genshin Impact">Genshin Impact</button>
+            <button class="category-btn" data-category="MLBB Global">MLBB Global</button>
+        </div>
+        
+        <div class="products">
+            <div class="product-card" data-id="1" data-name="YouTube Premium 1 Bulan Full" data-price="3500" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="Apk premium">
+                <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 5" />
+                <span class="category">Apk premium</span>
+                <h3>YouTube Premium 1 Bulan Full</h3>
+                <div class="price">Rp 3.500</div>
+                <p class="product-description">
+                    ✅ Tanya Stock Sebelum Order
+                    ✅ FamHead Bisa Invite 5 Orang
+                    ✅ Full Garansi
+                </p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="2" data-name="YouTube Premium FamHead 1 Bulan" data-price="5000" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="Apk premium">
+                <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 5" />
+                <span class="category">Apk premium</span>
+                <h3>YouTube Premium FamHead 1 Bulan</h3>
+                <div class="price">Rp 5.000</div>
+                <p class="product-description">
+                    ✅ Tanya Stock Sebelum Order
+                    ✅ FamHead Bisa Invite 5 Orang
+                    ✅ Full Garansi
+                </p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="3" data-name="Canva premium 1 bulan" data-price="1000" data-img="https://files.catbox.moe/o6h26m.png" data-category="Apk premium">
+                <img src="https://files.catbox.moe/o6h26m.png" alt="Produk 5" />
+                <span class="category">Apk premium</span>
+                <h3>Canva premium 1 bulan</h3>
+                <div class="price">Rp 1.000</div>
+                <p class="product-description">
+                    ✅ Tanya Stock Sebelum Order
+                    ✅ Cukup Kirim Email
+                    ✅ Pro Head Bisa Invite 100
+                    ✅ Full Garansi
+                </p>
+                </p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+                <div class="product-card" data-id="4" data-name="Canva premium 3 bulan" data-price="2500" data-img="https://files.catbox.moe/o6h26m.png" data-category="Apk premium">
+                <img src="https://files.catbox.moe/o6h26m.png" alt="Produk 5" />
+                <span class="category">Apk premium</span>
+                <h3>Canva premium 3 bulan</h3>
+                <div class="price">Rp 2.500</div>
+                <p class="product-description">
+                    ✅ Tanya Stock Sebelum Order
+                    ✅ Cukup Kirim Email
+                    ✅ Pro Head Bisa Invite 100
+                    ✅ Full Garansi
+                </p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+
+                <div class="product-card" data-id="5" data-name="Canva premium 6 bulan" data-price="5500" data-img="https://files.catbox.moe/o6h26m.png" data-category="Apk premium">
+                <img src="https://files.catbox.moe/o6h26m.png" alt="Produk 5" />
+                <span class="category">Apk premium</span>
+                <h3>Canva premium 6 bulan</h3>
+                <div class="price">Rp 5.500</div>
+                <p class="product-description">
+                    ✅ Tanya Stock Sebelum Order
+                    ✅ Cukup Kirim Email
+                    ✅ Pro Head Bisa Invite 100
+                    ✅ Full Garansi
+                </p>
+                <button class="btn-glass add-cart-btn">Beli</button></div>
+
+                <div class="product-card" data-id="6" data-name="Canva premium 1 tahun" data-price="8500" data-img="https://files.catbox.moe/o6h26m.png" data-category="Apk premium">
+                <img src="https://files.catbox.moe/o6h26m.png" alt="Produk 5" />
+                <span class="category">Apk premium</span>
+                <h3>Canva premium 1 tahun</h3>
+                <div class="price">Rp 8.500</div>
+                <p class="product-description">
+                    ✅ Tanya Stock Sebelum Order
+                    ✅ Cukup Kirim Email
+                    ✅ Pro Head Bisa Invite 100
+                    ✅ Full Garansi
+                </p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="7" data-name="Canva premium Private & Owner/Head" data-price="7.326" data-img="https://files.catbox.moe/o6h26m.png" data-category="Apk premium">
+                <img src="https://files.catbox.moe/o6h26m.png" alt="Produk 5" />
+                <span class="category">Apk premium</span>
+                <h3>Canva premium Private & Owner/Head</h3>
+                <div class="price">Rp 7.326</div>
+                <p class="product-description">
+                    ✅ Tanya Stock Sebelum Order
+                    ✅ Cukup Kirim Email
+                    ✅ Pro Head Bisa Invite 100
+                    ✅ Full Garansi
+                    ✅ 1 Bulan
+                </p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
             
-            const category = btn.dataset.category;
+            <div class="product-card" data-id="8" data-name="YouTube Community Like / 50" data-price="1100" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
+                <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 1" />
+                <span class="category">Youtube</span>
+                <h3>Youtube Community Like / 50</h3>
+                <div class="price">Rp 1.100</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="9" data-name="YouTube Likes [Garansi] / 100" data-price="1700" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
+                <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 4" />
+                <span class="category">YouTube</span>
+                <h3>YouTube Likes [Garansi] / 100</h3>
+                <div class="price">Rp 1.700</div>
+                <p class="product-description">
+                    ~ Start Time : Instant
+                    ~ Speed : 500K Per Day
+                    ~ Min/Max : 20/500K
+                    ~ Guarantee : 365 Days Refill (Button Active)
+                    ~ Drop Rate : No Drop
+                    ~ Country : Global
+                    Waktu Rata-Rata:
+                    1 jam 57 menit 37 detik
+                </p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="10" data-name="YouTube Subscribers / 50" data-price="4236" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
+                <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 4" />
+                <span class="category">YouTube</span>
+                <h3>YouTube Subscribers / 50</h3>
+                <div class="price">Rp 4.236</div>
+                <p class="product-description">
+                    - Link: Youtube Channel Link
+                    - Location: Global
+                    - Quality: Quality Accounts
+                    - Start: 0-10 Minutes
+                    - Speed: Days 200
+                    Waktu Rata-Rata:
+                    1 hari 19 jam 50 menit
+                </p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="11" data-name="YouTube Views / 100" data-price="3215" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
+                <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 4" />
+                <span class="category">YouTube</span>
+                <h3>YouTube Views / 100</h3>
+                <div class="price">Rp 3.215</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="12" data-name="Youtube Watch Time / 1.000" data-price="61581" data-img="https://files.catbox.moe/lazf3p.jpg" data-category="YouTube">
+                <img src="https://files.catbox.moe/lazf3p.jpg" alt="Produk 4" />
+                <span class="category">YouTube</span>
+                <h3>Youtube Watch Time / 1.000</h3>
+                <div class="price">Rp 61.581</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="13" data-name="TikTok Likes / 1.000" data-price="2436" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
+                <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
+                <span class="category">Tiktok</span>
+                <h3>TikTok Likes / 1.000</h3>
+                <div class="price">Rp 2.436</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="14" data-name="TikTok Likes Indonesia 100% / 50" data-price="1753" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
+                <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
+                <span class="category">Tiktok</span>
+                <h3>TikTok Likes Indonesia 100% / 50</h3>
+                <div class="price">Rp 1.753</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="15" data-name="TikTok Followers / 100" data-price="2786" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
+                <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
+                <span class="category">Tiktok</span>
+                <h3>TikTok Followers / 100</h3>
+                <div class="price">Rp 2.786</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="16" data-name="Tiktok Followers Indonesia / 10" data-price="1096" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
+                <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
+                <span class="category">Tiktok</span>
+                <h3>Tiktok Followers Indonesia / 10</h3>
+                <div class="price">Rp 1.096</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="17" data-name="TikTok Save / 1.000" data-price="1365" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
+                <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
+                <span class="category">Tiktok</span>
+                <h3>TikTok Save / 1.000</h3>
+                <div class="price">Rp 1.365</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="18" data-name="TikTok Video Views / 10.000" data-price="1496" data-img="https://files.catbox.moe/opnksa.jpeg" data-category="Tiktok">
+                <img src="https://files.catbox.moe/opnksa.jpeg" alt="Produk 4" />
+                <span class="category">Tiktok</span>
+                <h3>TikTok Video Views / 10.000</h3>
+                <div class="price">Rp 1.496</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="19" data-name="Instagram Followers Indonesia / 100" data-price="3096" data-img="https://files.catbox.moe/ghdg3f.jpg" data-category="Instagram">
+                <img src="https://files.catbox.moe/ghdg3f.jpg" alt="Produk 3" />
+                <span class="category">Instagram</span>
+                <h3>Instagram Followers Indonesia / 100</h3>
+                <div class="price">Rp 3.096</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="20" data-name="Instagram Likes Indonesia / 100" data-price="896" data-img="https://files.catbox.moe/ghdg3f.jpg" data-category="Instagram">
+                <img src="https://files.catbox.moe/ghdg3f.jpg" alt="Produk 3" />
+                <span class="category">Instagram</span>
+                <h3>Instagram Likes Indonesia / 100</h3>
+                <div class="price">Rp 896</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="21" data-name="Instagram Reels Real Likes / 1.000" data-price="742" data-img="https://files.catbox.moe/ghdg3f.jpg" data-category="Instagram">
+                <img src="https://files.catbox.moe/ghdg3f.jpg" alt="Produk 3" />
+                <span class="category">Instagram</span>
+                <h3>Instagram Reels Real Likes / 1.000</h3>
+                <div class="price">Rp 742</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="22" data-name="Whatsapp Channel Post Reaction Random Mix [👍❤️😂😲😥🙏] / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction Random Mix [👍❤️😂😲😥🙏] / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    1 jam 7 menit 15 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="23" data-name="Whatsapp Channel Post Reaction [ 👍 ] | Ultra Fast / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction [ 👍 ] | Ultra Fast / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    2 jam 50 menit 14 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="24" data-name="Whatsapp Channel Post Reaction [ ❤️ ] | Ultra Fast / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction [ ❤️ ] | Ultra Fast / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    1 jam 6 menit 13 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="25" data-name="Whatsapp Channel Post Reaction [ 😂 ] | Ultra Fast / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction [ 😂 ] | Ultra Fast / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    2 jam 30 menit 17 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="26" data-name="Whatsapp Channel Post Reaction [ 😲 ] | Ultra Fast / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction [ 😲 ] | Ultra Fast / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    1 jam 18 menit 28 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="27" data-name="Whatsapp Channel Post Reaction [ 🙏 ] | Ultra Fast / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction [ 🙏 ] | Ultra Fast / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    2 jam 22 menit 29 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="28" data-name="Whatsapp Channel Post Reaction [ 👏 ] | Ultra Fast / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction [ 👏 ] | Ultra Fast / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    2 jam 58 menit 14 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="29" data-name="Whatsapp Channel Post Reaction [ 🔥 ] | Ultra Fast / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction [ 🔥 ] | Ultra Fast / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    2 jam 42 menit 42 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="30" data-name="Whatsapp Channel Post Reaction [ 🏆 ] | Ultra Fast / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction [ 🏆 ] | Ultra Fast / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    2 jam 4 menit 4 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="31" data-name="Whatsapp Channel Post Reaction [ 🎉 ] | Ultra Fast / 100" data-price="1625" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Post Reaction [ 🎉 ] | Ultra Fast / 100</h3>
+                <div class="price">Rp 1.625</div>
+                <p class="product-description">- No Refill
+                    - Ultra Fast
+                    Waktu Rata-Rata:
+                    2 jam 42 menit 51 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="32" data-name="Whatsapp Channel Member [No garansi] / 50" data-price="1500" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Member [No garansi] / 50</h3>
+                <div class="price">Rp 1.500</div>
+                <p class="product-description">- No Refill
+                    - Speed 1K/ Day
+                    - proses 0 - 4hari
+                    Waktu Rata-Rata : 37 menit 20 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="33" data-name="Whatsapp Channel Member [Garansi] / 10" data-price="400" data-img="https://files.catbox.moe/53gt8j.jpg" data-category="WhatsApp">
+                <img src="https://files.catbox.moe/53gt8j.jpg" alt="Produk 4" />
+                <span class="category">WhatsApp</span>
+                <h3>Whatsapp Channel Member [Garansi] / 10</h3>
+                <div class="price">Rp 400</div>
+                <p class="product-description">- Refill 30 Days
+                    - Speed 2K/ Day
+                    - Proses 0 - 4 hari
+                    Waktu Rata-Rata:
+                    3 jam 19 menit 42 detik</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="34" data-name="Twitter Video Views / 1.000" data-price="453" data-img="https://files.catbox.moe/numxut.jpg" data-category="Twitter">
+                <img src="https://files.catbox.moe/numxut.jpg" alt="Produk 5" />
+                <span class="category">Twitter</span>
+                <h3>Twitter Video Views / 1.000</h3>
+                <div class="price">Rp 453</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="35" data-name="Twitter Likes / 100" data-price="2932" data-img="https://files.catbox.moe/numxut.jpg" data-category="Twitter">
+                <img src="https://files.catbox.moe/numxut.jpg" alt="Produk 5" />
+                <span class="category">Twitter</span>
+                <h3>Twitter Likes / 100</h3>
+                <div class="price">Rp 2.932</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="36" data-name="Twitter Followers / 100" data-price="2932" data-img="https://files.catbox.moe/numxut.jpg" data-category="Twitter">
+                <img src="https://files.catbox.moe/numxut.jpg" alt="Produk 5" />
+                <span class="category">Twitter</span>
+                <h3>Twitter Followers / 100</h3>
+                <div class="price">Rp 2.932</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="37" data-name="Shopee Followers Indonesia / 1.000" data-price="3586" data-img="https://files.catbox.moe/luvqah.jpg" data-category="Shopee">
+                <img src="https://files.catbox.moe/luvqah.jpg" alt="Produk 6" />
+                <span class="category">Shopee</span>
+                <h3>Shopee Followers Indonesia / 1.000</h3>
+                <div class="price">Rp 3.586</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="38" data-name="Panel Bot 1Gb" data-price="1000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 1Gb</h3>
+                <div class="price">Rp 1.000</div>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣𝟤.000</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="39" data-name="Panel Bot 2Gb" data-price="2000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 2Gb</h3>
+                <div class="price">Rp 2.000</div>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣𝟤.000</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="40" data-name="Panel Bot 3Gb" data-price="3000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 3Gb</h3>
+                <div class="price">Rp 3.000</div>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣𝟤.000</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="41" data-name="Panel Bot 4Gb" data-price="4000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 4Gb</h3>
+                <div class="price">Rp 4.000</div>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣𝟤.000</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="42" data-name="Panel Bot 5Gb" data-price="5000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 5Gb</h3>
+                <div class="price">Rp 5.000</div>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣𝟤.000</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="43" data-name="Panel Bot 6Gb" data-price="6000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 6Gb</h3>
+                <div class="price">Rp 6.000</div>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣𝟤.000</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="44" data-name="Panel Bot 7Gb" data-price="7000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 7Gb</h3>
+                <div class="price">Rp 7.000</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="45" data-name="Panel Bot 8Gb" data-price="8000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 8Gb</h3>
+                <div class="price">Rp 8.000</div>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣𝟤.000</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="46" data-name="Panel Bot 9Gb" data-price="9000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 9Gb</h3>
+                <div class="price">Rp 9.000</div>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣𝟤.000</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="47" data-name="Panel Bot 10Gb" data-price="10000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot 10Gb</h3>
+                <div class="price">Rp 10.000</div>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣𝟤.000</p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="48" data-name="Panel Bot unlimited" data-price="12000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot unlimited</h3>
+                <p class="product-description">
+                     ◇ 𝖱𝖺𝗆 𝟣𝗀𝖻 𝖢𝗉𝗎 𝟦𝟢% — 𝖱𝗉 𝟣.000
+                      ◇ 𝖱𝖺𝗆 𝟤𝗀𝖻 𝖢𝗉𝗎 𝟨𝟢% — 𝖱𝗉 𝟤.000
+                       ◇ 𝖱𝖺𝗆 𝟥𝗀𝖻 𝖢𝗉𝗎 𝟪𝟢% — 𝖱𝗉 𝟥.000
+                        ◇ 𝖱𝖺𝗆 𝟦𝗀𝖻 𝖢𝗉𝗎 𝟣𝟢𝟢% — 𝖱𝗉 𝟦.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟧𝗀𝖻 𝖢𝗉𝗎 𝟣𝟤𝟢% — 𝖱𝗉 𝟧.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟨𝗀𝖻 𝖢𝗉𝗎 𝟣𝟦𝟢% — 𝖱𝗉 𝟨.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟩𝗀𝖻 𝖢𝗉𝗎 𝟣𝟨𝟢% — 𝖱𝗉 𝟩.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟪𝗀𝖻 𝖢𝗉𝗎 𝟣𝟪𝟢% — 𝖱𝗉 𝟪.𝟢𝟢𝟢
+                         ◇ 𝖱𝖺𝗆 𝟫𝗀𝖻 𝖢𝗉𝗎 𝟤𝟢𝟢% — 𝖱𝗉 𝟫.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝟣𝟢𝗀𝖻 𝖢𝗉𝗎 𝟤𝟤𝟢% — 𝖱𝗉 𝟣𝟢.𝟢𝟢𝟢
+                          ◇ 𝖱𝖺𝗆 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽 — 𝖱𝗉 𝟣2.000</p>
+                <div class="price">Rp 11.000</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="49" data-name="Panel Bot Resseler 1Gb-unli" data-price="12000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot Resseler 1Gb-unli</h3>
+                <div class="price">Rp 12.000</div>
+                <p class="product-description"></p>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+            <div class="product-card" data-id="50" data-name="Panel Bot ADP [admin panel]" data-price="15000" data-img="https://files.catbox.moe/e82g1m.png" data-category="Panel bot Wa atau Tele">
+                <img src="https://files.catbox.moe/e82g1m.png" alt="Produk 5" />
+                <span class="category">Panel bot Wa atau Tele</span>
+                <h3>Panel Bot ADP [admin panel]</h3>
+                <div class="price">Rp 15.000</div>
+                <button class="btn-glass add-cart-btn">Beli</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 <strong>alfaRow SMM</strong>. All rights reserved.</p>
+    </footer>
+
+    <script src="//code.tidio.co/hngwbwfu8glbxcemqnez4ksog493gxw3.js" async></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script>
+        // =================================================================
+        // 1. KONFIGURASI FIREBASE ANDA
+        // =================================================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyDEfb3zkNFU2YGxZlg59go6N-n0RQmr_ks",
+            authDomain: "alfarow-multi.firebaseapp.com",
+            projectId: "alfarow-multi",
+            storageBucket: "alfarow-multi.appspot.com",
+            messagingSenderId: "575378922898",
+            appId: "1:575378922898:web:f4ef23f268aea69ad1354b",
+            measurementId: "G-XEX4BZ1GQS"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // =================================================================
+        // 2. LOGIKA UTAMA: PROTEKSI HALAMAN & TAMPILKAN USERNAME
+        // =================================================================
+        const headerRight = document.getElementById("header-right");
+        const mainNav = document.getElementById("main-nav");
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // Pengguna login, atur halaman untuknya
+                setupPageForLoggedInUser(user);
+            } else {
+                // Tidak ada pengguna, lempar ke halaman login
+                console.log("Status: Tidak Ada Sesi Login. Mengarahkan ke login.html");
+                window.location.href = "login.html";
+            }
+        });
+
+        function setupPageForLoggedInUser(user) {
+            console.log("Status: Login Berhasil | Pengguna:", user.displayName);
+
+            // Tampilkan Nama Pengguna dan Tombol Logout di Header
+            headerRight.innerHTML = `
+                <a href="checkout.html" class="cart-link" style="margin-left:0;">
+                    <span class="cart-icon">🛒</span>
+                    <span id="cart-count">0</span>
+                </a>
+                <span class="user-greet">Hi, ${user.displayName || 'Pengguna'}</span>
+                <button id="logout-button" class="btn-glass" style="margin-left:0;">Logout</button>
+            `;
             
-            // Filter products
-            productCards.forEach(card => {
-              if (category === 'all' || card.dataset.category === category) {
-                card.style.display = 'block';
-              } else {
-                card.style.display = 'none';
-              }
+            document.getElementById('logout-button').addEventListener('click', () => {
+                auth.signOut(); // Perintah logout dari Firebase
             });
-          });
-        });
-      }
 
-      renderHeaderRight();
-      renderNav();
-      filterProducts();
+            // Buat link untuk navigasi mobile (drawer)
+            mainNav.innerHTML = `
+                <a href="index.html">Home</a>
+                <a href="#produk">Produk</a>
+                <a href="promo.html">Promo</a>
+                <a href="#" id="mobile-logout-button">Logout</a>
+            `;
+            
+            document.getElementById('mobile-logout-button').addEventListener('click', (e) => {
+                e.preventDefault();
+                auth.signOut();
+            });
 
-      hamburger.addEventListener("click", function(e){
-        nav.classList.toggle("show");
-        e.stopPropagation();
-      });
-
-      document.addEventListener("click", function(e){
-        if(window.innerWidth <= 800 && !nav.contains(e.target) && !hamburger.contains(e.target)){
-          nav.classList.remove("show");
+            // Jalankan fungsi lain untuk interaksi halaman
+            initializePageFunctions();
         }
-      });
 
-      document.querySelectorAll("#main-nav a").forEach(link => {
-        link.addEventListener("click", () => {
-          if(window.innerWidth <= 800){
-            nav.classList.remove("show");
-          }
-        });
-      });
-    });
-  </script>
+        function initializePageFunctions() {
+            const hamburger = document.getElementById("hamburger-menu");
+            
+            // Fungsi untuk Hamburger Menu
+            hamburger.addEventListener("click", (e) => {
+                mainNav.classList.toggle("show");
+                e.stopPropagation();
+            });
+
+            document.addEventListener("click", (e) => {
+                if (window.innerWidth <= 800 && !mainNav.contains(e.target) && !hamburger.contains(e.target)) {
+                    mainNav.classList.remove("show");
+                }
+            });
+
+            // Fungsi untuk Filter Produk
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const category = btn.dataset.category;
+                    productCards.forEach(card => {
+                        card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+                    });
+                });
+            });
+
+            // Anda bisa menambahkan fungsi lain di sini, seperti untuk tombol "Beli"
+        }
+    </script>
 </body>
 </html>
-
-
-
